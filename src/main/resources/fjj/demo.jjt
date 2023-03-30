@@ -1,0 +1,42 @@
+PARSER_BEGIN(Example)
+
+package tech.deep.javacc;
+/** Simple brace matcher. */
+public class Example {
+
+  /** Main entry point. */
+  public static void main(String args[]) throws ParseException {
+    Example parser = new Example(System.in);
+    System.out.println("input = " + Long.parseLong(parser.compute()));
+  }
+
+}
+
+PARSER_END(Example)
+
+SKIP :
+{
+     " "
+  |  "\t"
+}
+
+TOKEN : {
+        < Letter    : ["a" - "z", "A" - "Z"]>
+    |   < EOS       : ";" | "\r\n" | "\n" | "\r" >
+    |   < Plus      : "+" >
+    |   < Assign    : "=" >
+    |   < Int       : (["0" - "9"])+>
+}
+
+/** Root production. */
+String compute() :
+{
+    Token ret;
+}
+{
+    <Letter> <Plus> <Letter> <Assign> ret = <Int> <EOS>
+    {
+        return ret.image;
+    }
+}
+
