@@ -1,6 +1,6 @@
 PARSER_BEGIN(Example)
 
-package tech.deep.javacc;
+package tech.deep.javacc.gen.demo;
 /** Simple brace matcher. */
 public class Example {
 
