@@ -39,8 +39,23 @@ def format_dt():
     parsed_dt = dt.datetime.strptime(format_str, pattern)
     print("parse from string", parsed_dt)
 
+
+def calc_duration():
+    date1 = "2023-03-21 13:10"
+    date2 = "2023-01-12 21:32"
+    pattern = "%Y-%m-%d %H:%M"
+
+    datetime1 = dt.datetime.strptime(date1, pattern)
+    datetime2 = dt.datetime.strptime(date2, pattern)
+
+    delta = datetime1 - datetime2
+    print('相差天数', delta.days)
+    print('相差秒数', delta.seconds)
+
+
 if "__main__" == __name__ :
     datetime_values()
     timestamp()
     format_dt()
+    calc_duration()
 
